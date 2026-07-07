@@ -1,12 +1,10 @@
-# Active_Directory_HomeLab
-Active Directory homelab built with Windows Server 2019 and Windows 10 in VirtualBox. Covers AD DS installation, domain controller promotion, OU structure, user/group management using PowerShell scripting, and Group Policy Objects (GPOs) for centralized endpoint control. step-by-step documentation of domain join and policy enforcement testing.
-
-
 <div align="center">
 
-# 🖥️ Active Directory Homelab
+# 🖥️ Active Directory Homelab with PowerShell Automation
 
-**Windows Server 2019 + Windows 10 + PowerShell | VirtualBox**
+**Windows Server 2019 + Windows 10 | Oracle VirtualBox**
+
+A homelab simulating a small business network — Domain Controller setup, RAS/NAT routing, DHCP scoping, and seemingless user creation via PowerShell.
 
 </div>
 
@@ -14,66 +12,73 @@ Active Directory homelab built with Windows Server 2019 and Windows 10 in Virtua
 
 ## 📋 Overview
 
-This lab simulates a small business network using **Active Directory Domain Services (AD DS)** on Windows Server 2019, joined by a Windows 10 client, with additional network services configured to handle IP addressing, name resolution, remote access, and adding new AD users using a PowerShell script
+This project walks through building an Active Directory environment from scratch, configuring core network services, and using PowerShell to automate the creation of AD user accounts — simulating how a real enterprise network provisions and manages users at scale.
 
 ## 🧩 Components
 
 | Service | Role |
 |---|---|
-| **AD DS** | Centralized domain (`dom.com`), user/group management, OU structure |
-| **Group Policy (GPO)** | Login scripts, drive mapping, security/audit policies |
-| **DHCP Server** | Automatic IP addressing and scope management for domain clients |
-| **RAS (Remote Access Service)** | Remote connectivity into the domain network |
-| **DNS** | Internal hostname resolution for domain-joined machines |
+| **AD DS** | Domain Controller setup, custom Domain Admin account |
+| **RAS (Remote Access Service)** | Routes internet access from the internal network through the DC (acts as gateway/NAT) |
+| **DHCP Server** | Automatic IP address assignment with a defined scope |
+| **PowerShell** | created AD users based on the given parameters of the hash-table |
 
 ## 🗺️ Topology
 
 ```
-                 ┌─────────────────────────┐
-                 │   Windows Server 2019    │
-                 │  (Domain Controller)     │
-                 │  - AD DS                 │
-                 │  - DHCP Server           │
-                 │  - RAS                   │
-                 │  - DNS                   │
-                 └───────────┬─────────────┘
-                             │
-                    Internal Network (LAN)
-                             │
-                 ┌───────────┴─────────────┐
-                 │      Windows 10          │
-                 │   (Domain-joined client)  │
-                 └──────────────────────────┘
+        Internet
+            │
+      [NAT Adapter]
+            │
+ ┌──────────┴───────────┐
+ │  Windows Server 2019   │
+ │  (Domain Controller)   │
+ │  - AD DS               │
+ │  - RAS/NAT             │
+ │  - DHCP                │
+ └──────────┬───────────┘
+      [Internal Network Adapter]
+            │
+ ┌──────────┴───────────┐
+ │      Windows 10        │
+ │  (Domain-joined client) │
+ └────────────────────────┘
 ```
 
 ## ✅ What's Implemented
 
-- [x] AD DS installation and domain controller promotion
-- [x] OU structure with delegated administration
-- [x] Fine-grained password policies
-- [x] GPO-based login scripts and drive mapping
-- [x] DHCP server — scope creation, lease management, reservations
-- [x] RAS configuration for remote client access into the domain
-- [x] Domain join and Group Policy verification on Windows 10 client
+- [x] Domain Controller with dual NICs (NAT + internal network)
+- [x] AD DS installation and domain promotion
+- [x] Custom Domain Admin account (promoted to Domain Admins group)
+- [x] RAS/NAT configuration for internet access on the internal network
+- [x] DHCP scope configuration for automatic client IP addressing
+- [x] PowerShell script to create AD users
+- [x] Windows 10 client joined to the domain, verified login with a generated account
 
 ## 🛠️ Setup Steps
 
-1. Deployed Windows Server 2019 in VirtualBox with static IP
-2. Installed AD DS role → promoted server to domain controller
-3. Created a PowerShell script to create Users. 
-4. Installed and configured **DHCP role** — defined scope, exclusions, lease duration
-5. Installed and configured **RAS** — enabled remote access into `dom.com`
-6. Joined Windows 10 client to domain via DHCP-assigned IP
-7. Verified GPO application and remote connectivity from client
+1. Created DC VM in VirtualBox with two network adapters (NAT + Internal Network)
+2. Installed Windows Server 2019, installed AD DS role, promoted to Domain Controller
+3. Created a custom Domain Admin account
+4. Configured RAS/NAT to route internal network traffic to the internet
+5. Configured DHCP scope for client IP leasing
+7. Ran the script in PowerShell ISE to create AD users with ease
+8. Created Windows 10 client VM, joined it to the domain
+9. Logged in as a generated user account to verify domain connectivity
 
 ## 📸 Screenshots
 
 *PLEASE HEAD TO MY LINKEDIN FOR MORE INFORMATION*
 
+## 🚀 Next Steps
+
+- [ ] Group Policy Objects (GPO) for centralized client config
+- [ ] Organizational Units (OUs) with delegated administration
+
 ---
 
 <div align="center">
 
-**Tech stack:** Windows Server 2019 · Windows 10 · VirtualBox · Active Directory · DHCP · RAS · Group Policy 
+**Tech stack:** Windows Server 2019 · Windows 10 · VirtualBox · Active Directory · PowerShell · DHCP · RAS/NAT
 
 </div>
