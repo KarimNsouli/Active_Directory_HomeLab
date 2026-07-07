@@ -6,9 +6,7 @@ Active Directory homelab built with Windows Server 2019 and Windows 10 in Virtua
 
 # 🖥️ Active Directory Homelab
 
-**Windows Server 2019 + Windows 10 | VirtualBox**
-
-Simulated small-business network built to practice enterprise identity, access, and network services management.
+**Windows Server 2019 + Windows 10 + PowerShell | VirtualBox**
 
 </div>
 
