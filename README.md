@@ -14,7 +14,7 @@ Active Directory homelab built with Windows Server 2019 and Windows 10 in Virtua
 
 ## 📋 Overview
 
-This lab simulates a small business network using **Active Directory Domain Services (AD DS)** on Windows Server 2019, joined by a Windows 10 client, with additional network services configured to handle IP addressing, name resolution, and remote access.
+This lab simulates a small business network using **Active Directory Domain Services (AD DS)** on Windows Server 2019, joined by a Windows 10 client, with additional network services configured to handle IP addressing, name resolution, remote access, and adding new AD users using a PowerShell script
 
 ## 🧩 Components
 
