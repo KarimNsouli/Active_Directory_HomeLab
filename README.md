@@ -1,5 +1,5 @@
 # Active_Directory_HomeLab
-Active Directory homelab built with Windows Server 2019 and Windows 10 in VirtualBox. Covers AD DS installation, domain controller promotion, OU structure, user/group management, and Group Policy Objects (GPOs) for centralized endpoint control. Includes screenshots and step-by-step documentation of domain join and policy enforcement testing.
+Active Directory homelab built with Windows Server 2019 and Windows 10 in VirtualBox. Covers AD DS installation, domain controller promotion, OU structure, user/group management using PowerShell scripting, and Group Policy Objects (GPOs) for centralized endpoint control. step-by-step documentation of domain join and policy enforcement testing.
 
 
 <div align="center">
@@ -20,7 +20,7 @@ This lab simulates a small business network using **Active Directory Domain Serv
 
 | Service | Role |
 |---|---|
-| **AD DS** | Centralized domain (`corp.local`), user/group management, OU structure |
+| **AD DS** | Centralized domain (`dom.com`), user/group management, OU structure |
 | **Group Policy (GPO)** | Login scripts, drive mapping, security/audit policies |
 | **DHCP Server** | Automatic IP addressing and scope management for domain clients |
 | **RAS (Remote Access Service)** | Remote connectivity into the domain network |
@@ -60,9 +60,9 @@ This lab simulates a small business network using **Active Directory Domain Serv
 
 1. Deployed Windows Server 2019 in VirtualBox with static IP
 2. Installed AD DS role → promoted server to domain controller
-3. Created OUs and test users, configured password/audit policies
+3. Created a PowerShell script to create Users. 
 4. Installed and configured **DHCP role** — defined scope, exclusions, lease duration
-5. Installed and configured **RAS** — enabled remote access into `corp.local`
+5. Installed and configured **RAS** — enabled remote access into `dom.com`
 6. Joined Windows 10 client to domain via DHCP-assigned IP
 7. Verified GPO application and remote connectivity from client
 
