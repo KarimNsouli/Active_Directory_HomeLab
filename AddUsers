@@ -1,0 +1,31 @@
+echo "--USER INFORMATION--"
+
+$first_name = Read-Host -Prompt "enter first name: "
+$last_name = Read-Host -Prompt "enter last name: "
+
+$email = "example.com"
+
+$path = "OU=ADIM,DC=dom,DC=com"
+$Account_Name = "$first_name $last_name"
+$Log_In_Name = "$Account_Name@$email"
+
+$password = "Password1"
+$securePass = ConvertTo-SecureString -String $password -AsPlainText -Force
+
+$UserTable = @{
+    Name                 = $Account_Name
+    GivenName            = $first_name
+    SurName              = $last_name
+    DisplayName          = $Account_Name
+    SamAccountName       = "$first_name.$last_name"
+    UserPrincipalName    = $Log_In_Name
+    Path                 = $path
+    AccountPassword      = $securePass
+    Enabled              = $true
+    PasswordNeverExpires = $true
+}
+
+New-ADUser @UserTable
+
+echo "$Account_Name has been added"
+echo "--END OF USER INFORMATION--"
