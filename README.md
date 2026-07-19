@@ -12,7 +12,7 @@ A homelab simulating a small business network — Domain Controller setup, RAS/N
 
 ## Overview
 
-This project walks through building an Active Directory environment from scratch, configuring core network services, and using PowerShell to automate the creation of 1000x AD user accounts — simulating how a real enterprise network provisions and manages users at scale.
+This project walks through building an Active Directory environment from scratch, configuring core network services, and using PowerShell to automate the creation of 100x AD user accounts — simulating how a real enterprise network provisions and manages users at scale.
 
 ## Components
 
@@ -21,7 +21,7 @@ This project walks through building an Active Directory environment from scratch
 | **AD DS** | Domain Controller setup, custom Domain Admin account |
 | **RAS (Remote Access Service)** | Routes internet access from the internal network through the DC (acts as gateway/NAT) |
 | **DHCP Server** | Automatic IP address assignment with a defined scope |
-| **PowerShell** | created 1000x AD users based on the given parameters of the hash-table |
+| **PowerShell** | created 100x AD users based on the given parameters of the hash-table |
 
 ## Topology
 
@@ -52,7 +52,7 @@ This project walks through building an Active Directory environment from scratch
 - [x] Custom Domain Admin account (promoted to Domain Admins group).
 - [x] RAS/NAT configuration for internet access on the internal network.
 - [x] DHCP scope configuration for automatic client IP addressing.
-- [x] PowerShell script to create 1000x AD users.
+- [x] PowerShell script to create 100x AD users.
 - [x] Windows 10 client joined to the domain, verified login with a generated account.
 
 ## Setup Steps
